@@ -17,14 +17,14 @@ export const useGifs = () => {
     const handleTermClickked = async (term: string) => {
 
         if (gifsCache.current[term]) {
-            setGifs(gifsCache.current[term])
-
+            setGifs(gifsCache.current[term]);
             return;
         }
 
-        console.log({ term });
+        // console.log({ term });
         const gifs = await getGifsByQuery(term);
         setGifs(gifs);
+        gifsCache.current[term] = gifs;
     }
 
     const handleSearch = async (query: string = '') => {
@@ -39,10 +39,10 @@ export const useGifs = () => {
         // currentTerms.unshift(query);
         // setPreviousTerms(currentTerms);
 
-        setPreviousTerms([query, ...previousTerms].slice(0, 7));
+        setPreviousTerms([query, ...previousTerms].slice(0, 8));
 
         const gifs = await getGifsByQuery(query);
-        console.log(gifs);
+        // console.log(gifs);
 
         setGifs(gifs);
 

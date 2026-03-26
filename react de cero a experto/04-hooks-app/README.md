@@ -32,6 +32,7 @@ export default defineConfig([
 
       // Other configs...
     ],
+    
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
